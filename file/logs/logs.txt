@@ -1,0 +1,80 @@
+Unknown file .\config\config.properties
+.\config\config.properties (The system cannot find the path specified)	
+HH:mm:ss dd/MM/yyyy - 19:45:33 03/11/2024
+-----
+Unknown file ../module/config/config.properties
+..\module\config\config.properties (The system cannot find the path specified)	
+HH:mm:ss dd/MM/yyyy - 19:46:27 03/11/2024
+-----
+Unknown file ../module/config/config.properties
+..\module\config\config.properties (The system cannot find the path specified)	
+HH:mm:ss dd/MM/yyyy - 19:46:45 03/11/2024
+-----
+Unknown file ../module/config/config.properties
+..\module\config\config.properties (The system cannot find the path specified)	
+HH:mm:ss dd/MM/yyyy - 19:48:26 03/11/2024
+-----
+Unknown file ../module/config/config.properties
+..\module\config\config.properties (The system cannot find the path specified)	
+HH:mm:ss dd/MM/yyyy - 19:49:23 03/11/2024
+-----
+Unknown file ..\module\config\config.properties
+..\module\config\config.properties (The system cannot find the path specified)	
+HH:mm:ss dd/MM/yyyy - 19:50:13 03/11/2024
+-----
+Unknown file ..module/config/config.properties
+..module\config\config.properties (The system cannot find the path specified)	
+HH:mm:ss dd/MM/yyyy - 19:51:32 03/11/2024
+-----
+Unknown file ..module/config/config.properties
+..module\config\config.properties (The system cannot find the path specified)	
+HH:mm:ss dd/MM/yyyy - 19:52:14 03/11/2024
+-----
+Unknown file ..module/config/config.properties
+..module\config\config.properties (The system cannot find the path specified)	
+HH:mm:ss dd/MM/yyyy - 19:55:29 03/11/2024
+-----
+Unknown file ..module/config/config.properties
+..module\config\config.properties (The system cannot find the path specified)	
+HH:mm:ss dd/MM/yyyy - 19:55:53 03/11/2024
+-----
+Unknown file ..module/config/config.properties
+..module\config\config.properties (The system cannot find the path specified)	
+HH:mm:ss dd/MM/yyyy - 19:56:47 03/11/2024
+-----
+Unknown file ..module/config/config.properties
+..module\config\config.properties (The system cannot find the path specified)	
+HH:mm:ss dd/MM/yyyy - 19:56:57 03/11/2024
+-----
+Unknown file ..module/config/config.properties
+..module\config\config.properties (The system cannot find the path specified)	
+HH:mm:ss dd/MM/yyyy - 19:57:10 03/11/2024
+-----
+Unknown file ..module/config/config.properties
+..module\config\config.properties (The system cannot find the path specified)	
+HH:mm:ss dd/MM/yyyy - 19:57:24 03/11/2024
+-----
+driver not connect
+com.mysql.jdbc.Driver	
+HH:mm:ss dd/MM/yyyy - 19:59:29 03/11/2024
+-----
+driver not connect
+com.mysql.jdbc.Driver	
+HH:mm:ss dd/MM/yyyy - 20:00:49 03/11/2024
+-----
+driver not connect
+com.mysql.jdbc.Driver	
+HH:mm:ss dd/MM/yyyy - 20:01:11 03/11/2024
+-----
+driver not connect
+com.mysql.jdbc.Driver	
+HH:mm:ss dd/MM/yyyy - 20:05:46 03/11/2024
+-----
+driver not connect
+com.mysql.jdbc.Driver	
+HH:mm:ss dd/MM/yyyy - 20:12:46 03/11/2024
+-----
+driver not connect
+com.mysql.jdbc.Driver	
+HH:mm:ss dd/MM/yyyy - 20:14:07 03/11/2024
+-----
