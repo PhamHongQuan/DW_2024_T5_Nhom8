@@ -78,3 +78,33 @@ driver not connect
 com.mysql.jdbc.Driver	
 HH:mm:ss dd/MM/yyyy - 20:14:07 03/11/2024
 -----
+Error connect control
+Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.	
+HH:mm:ss dd/MM/yyyy - 22:20:42 04/11/2024
+-----
+Error connect control
+Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.	
+HH:mm:ss dd/MM/yyyy - 22:25:56 04/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 22:30:07 04/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 22:30:07 04/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 22:30:07 04/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 22:30:07 04/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 22:31:42 04/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 22:32:15 04/11/2024
+-----
