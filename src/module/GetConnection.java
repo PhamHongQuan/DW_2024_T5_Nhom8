@@ -128,21 +128,21 @@ public class GetConnection {
         return result;
     }
 
-//    public static void main(String[] args) {
-//        GetConnection connectionTest = new GetConnection();
-//
-//        try {
-//            Connection connection = connectionTest.getConnection("control");
-//            if (connection != null && !connection.isClosed()) {
-//                System.out.println("Kết nối thành công.");
-//                connection.close(); // Đóng kết nối sau khi kiểm tra
-//            } else {
-//                System.out.println("Kết nối thất bại.");
-//            }
-//        } catch (IOException e) {
-//            System.out.println("Lỗi IO: " + e.getMessage());
-//        } catch (Exception e) {
-//            System.out.println("Lỗi không xác định: " + e.getMessage());
-//        }
-//    }
+    public static void main(String[] args) {
+        GetConnection connectionTest = new GetConnection();
+
+        try {
+            Connection connection = connectionTest.getConnection("control");
+            if (connection != null && !connection.isClosed()) {
+                System.out.println("Kết nối thành công.");
+                connection.close(); // Đóng kết nối sau khi kiểm tra
+            } else {
+                System.out.println("Kết nối thất bại.");
+            }
+        } catch (IOException e) {
+            System.out.println("Lỗi IO: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Lỗi không xác định: " + e.getMessage());
+        }
+    }
 }

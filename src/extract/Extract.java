@@ -44,7 +44,7 @@ public class Extract {
             String note = "Data imported successfully";
             Date createdAt = new Date();
             Timestamp updatedAt = null;
-            String createdBy = "Nhật";
+            String createdBy = "Nghĩa";
             String updatedBy = null;
 
             preparedStatement.setLong(1, dfConfig);

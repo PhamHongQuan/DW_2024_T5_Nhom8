@@ -108,3 +108,109 @@ HH:mm:ss dd/MM/yyyy - 22:31:42 04/11/2024
 Chạy script data thành công	
 HH:mm:ss dd/MM/yyyy - 22:32:15 04/11/2024
 -----
+Error connect control
+Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.	
+HH:mm:ss dd/MM/yyyy - 16:18:40 05/11/2024
+-----
+Unknown file ../module/config/config.properties
+..\module\config\config.properties (The system cannot find the path specified)	
+HH:mm:ss dd/MM/yyyy - 16:22:37 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:30:57 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:30:57 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:30:59 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:30:59 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:32:23 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:32:23 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:32:24 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:32:24 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:36:48 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:36:48 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:36:48 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:36:48 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:38:17 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:38:17 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:38:18 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:38:18 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:38:33 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:38:33 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:38:34 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:38:34 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:39:00 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:39:00 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:39:00 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:39:00 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:41:10 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:41:10 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:41:10 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:41:10 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 20:32:22 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 20:32:22 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 20:32:22 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 20:32:22 05/11/2024
+-----
