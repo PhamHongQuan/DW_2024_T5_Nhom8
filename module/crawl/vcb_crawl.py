@@ -8,7 +8,7 @@ url = "https://portal.vietcombank.com.vn/Usercontrols/TVPortal.TyGia/pXML.aspx"
 # ...
 
 # Đặt đường dẫn thư mục lưu trữ trực tiếp trong mã code
-# folder_selected = "D:\\DW_2023_T4_Nhom7\\file"
+# folder_selected = "D:\\DW_2024_T5_Nhom8\\file"
 folder_selected = "D:\\DW_2024_T5_Nhom8\\file\\crawl\\vcb"
 
 try:

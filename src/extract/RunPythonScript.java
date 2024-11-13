@@ -35,15 +35,15 @@ public class RunPythonScript {
         }
     }
 
-    public static void main(String[] args) {
-        String pythonScriptPath = "D:\\DW_2024_T5_Nhom8\\module\\crawl\\vcb_crawl.py";
-        boolean scriptResult = runScript(pythonScriptPath);
-
-        if (scriptResult) {
-            System.out.println("Script executed successfully.");
-        } else {
-            System.out.println("Script failed.");
-        }
-
-    }
+//    public static void main(String[] args) {
+//        String pythonScriptPath = "D:\\DW_2024_T5_Nhom8\\module\\crawl\\vcb_crawl.py";
+//        boolean scriptResult = runScript(pythonScriptPath);
+//
+//        if (scriptResult) {
+//            System.out.println("Script executed successfully.");
+//        } else {
+//            System.out.println("Script failed.");
+//        }
+//
+//    }
 }
