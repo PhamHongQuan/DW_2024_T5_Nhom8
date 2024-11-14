@@ -1,112 +1,98 @@
-Unknown file .\config\config.properties
-.\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:45:33 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:22:36 07/11/2024
 -----
-Unknown file ../module/config/config.properties
-..\module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:46:27 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:32:37 07/11/2024
 -----
-Unknown file ../module/config/config.properties
-..\module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:46:45 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:33:23 07/11/2024
 -----
-Unknown file ../module/config/config.properties
-..\module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:48:26 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:52:47 07/11/2024
 -----
-Unknown file ../module/config/config.properties
-..\module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:49:23 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:53:32 07/11/2024
 -----
-Unknown file ..\module\config\config.properties
-..\module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:50:13 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:01:21 07/11/2024
 -----
-Unknown file ..module/config/config.properties
-..module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:51:32 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:02:05 07/11/2024
 -----
-Unknown file ..module/config/config.properties
-..module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:52:14 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:12:54 07/11/2024
 -----
-Unknown file ..module/config/config.properties
-..module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:55:29 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:13:54 07/11/2024
 -----
-Unknown file ..module/config/config.properties
-..module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:55:53 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:18:29 07/11/2024
 -----
-Unknown file ..module/config/config.properties
-..module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:56:47 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:19:06 07/11/2024
 -----
-Unknown file ..module/config/config.properties
-..module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:56:57 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:28:51 07/11/2024
 -----
-Unknown file ..module/config/config.properties
-..module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:57:10 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:29:53 07/11/2024
 -----
-Unknown file ..module/config/config.properties
-..module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:57:24 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:30:56 07/11/2024
 -----
-driver not connect
-com.mysql.jdbc.Driver	
-HH:mm:ss dd/MM/yyyy - 19:59:29 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:31:41 07/11/2024
 -----
-driver not connect
-com.mysql.jdbc.Driver	
-HH:mm:ss dd/MM/yyyy - 20:00:49 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:17:05 13/11/2024
 -----
-driver not connect
-com.mysql.jdbc.Driver	
-HH:mm:ss dd/MM/yyyy - 20:01:11 03/11/2024
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 09:18:32 13/11/2024
 -----
-driver not connect
-com.mysql.jdbc.Driver	
-HH:mm:ss dd/MM/yyyy - 20:05:46 03/11/2024
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 09:18:32 13/11/2024
 -----
-driver not connect
-com.mysql.jdbc.Driver	
-HH:mm:ss dd/MM/yyyy - 20:12:46 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 22:27:23 13/11/2024
 -----
-driver not connect
-com.mysql.jdbc.Driver	
-HH:mm:ss dd/MM/yyyy - 20:14:07 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 22:28:29 13/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 22:35:41 13/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 22:36:01 13/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 22:40:43 13/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 22:41:03 13/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 22:43:51 13/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 22:44:11 13/11/2024
 -----
 Error connect control
 Communications link failure
 
 The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.	
-HH:mm:ss dd/MM/yyyy - 22:20:42 04/11/2024
------
-Error connect control
-Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.	
-HH:mm:ss dd/MM/yyyy - 22:25:56 04/11/2024
------
-Chạy script data không thành công	
-HH:mm:ss dd/MM/yyyy - 22:30:07 04/11/2024
------
-Chạy script data không thành công	
-HH:mm:ss dd/MM/yyyy - 22:30:07 04/11/2024
------
-Crawl operation failed.	
-HH:mm:ss dd/MM/yyyy - 22:30:07 04/11/2024
------
-Crawl operation failed.	
-HH:mm:ss dd/MM/yyyy - 22:30:07 04/11/2024
+HH:mm:ss dd/MM/yyyy - 08:21:55 14/11/2024
 -----
 Chạy script data thành công	
-HH:mm:ss dd/MM/yyyy - 22:31:42 04/11/2024
+HH:mm:ss dd/MM/yyyy - 08:23:34 14/11/2024
 -----
 Chạy script data thành công	
-HH:mm:ss dd/MM/yyyy - 22:32:15 04/11/2024
+HH:mm:ss dd/MM/yyyy - 08:24:55 14/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:26:36 14/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:27:28 14/11/2024
 -----
 Error connect control
 Communications link failure

@@ -8,6 +8,7 @@ url = "https://portal.vietcombank.com.vn/Usercontrols/TVPortal.TyGia/pXML.aspx"
 # ...
 
 # Đặt đường dẫn thư mục lưu trữ trực tiếp trong mã code
+# folder_selected = "D:\\DW_2024_T5_Nhom8\\file"
 folder_selected = "D:\\DW_2024_T5_Nhom8\\file\\crawl\\vcb"
 
 try:
@@ -50,6 +51,7 @@ try:
 
             # Lấy ngày và thời gian hiện tại
             current_datetime = datetime.now().strftime("%Y%m%d")
+            current_datetime = datetime.now().strftime("%Y%m%d_%H%M")
 
             # Tạo tên file với định dạng "vietcombank_data_<ngày>_<giờ>.xlsx"
             excel_filename = f"{folder_selected}/vietcombank_data_{current_datetime}.csv"
