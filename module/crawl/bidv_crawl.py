@@ -80,6 +80,7 @@ df["Bank Name"] = bank_name
 df["Date"] = datetime.now().strftime("%Y-%m-%d")
 
 # Lấy ngày và thời gian hiện tại
+current_datetime = datetime.now().strftime("%Y%m%d")
 current_datetime = datetime.now().strftime("%Y%m%d_%H%M")
 
 # Tạo tên file với định dạng "vietcombank_data_<ngày>_<giờ>.xlsx"
