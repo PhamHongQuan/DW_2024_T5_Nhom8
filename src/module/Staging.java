@@ -34,6 +34,13 @@ public class Staging {
             url_sources = url_source.trim().split(",");
             // 3. Kết nối db control
             conn = new GetConnection().getConnection("control");
+            if (conn == null) {
+                // 3.1. Thông báo lỗi nếu kết nối DB control không thành công
+                System.out.println("Error connnect control. ");
+                // 3.2. Ghi log với nội dung "Error connnect control"
+                new GetConnection().logFile("Error connnect control .");
+                System.exit(0);
+            }
             // 4. Còn source data từ file config
             for (String us : url_sources) {
                 try {
@@ -56,20 +63,14 @@ public class Staging {
                             String source_path = re.getString("source_path");
                             String location = re.getString("location");
                             String format = re.getString("format");
-                            String path = "";
-                            if(filename.contains("vietcombank")){
-                                path = location +"\\" +"crawl"+"\\"+"vcb"+"\\"+filename;
-                            }else if (filename.contains("bidv")){
-                                path = location +"\\" +"crawl"+"\\"+"bidv"+"\\"+filename;
-                            }
+                            String path = location + "\\"+filename;
                             File file = new File(path);
-                            System.out.println("đường dẫn nè: "+path);
-                            // 8.1 Cập nhật trạng thái status='P' và destination = S
                             String sql4 = "UPDATE data_file SET status='E', "
                                     + "data_file.update_at=now() WHERE id=" + id;
                             String sql3 = "UPDATE data_file join data_file_configs on data_file.df_config_id = data_file_configs.id " +
                                     "SET status='P', destination = 'S', data_file.update_at=now(), data_file_configs.update_at=now()" +
                                     " WHERE data_file.id="+ id;
+                            // 8.1 Cập nhật trạng thái status='P' và destination = S
                             pre_control = conn.prepareStatement(sql3);
                             pre_control.executeUpdate();
                             // 8.2 Ktra file có tồn tại trong folder

@@ -41,8 +41,7 @@ public class GetConnection {
         FileWriter fw = new FileWriter("D:\\DW_2024_T5_Nhom8\\file\\logs\\logs.txt", true);
         PrintWriter pw = new PrintWriter(fw);
         pw.println(message + "\t");
-        pw.println("HH:mm:ss dd/MM/yyyy - "
-                + LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss dd/MM/yyyy")));
+        pw.println("HH:mm:ss dd/MM/yyyy - " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss dd/MM/yyyy")));
         pw.println("-----");
         pw.close();
     }

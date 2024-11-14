@@ -22,9 +22,8 @@ public class Extract {
         String insertSql = "INSERT INTO data_file (df_config_id, name, row_count, status, note, created_at, update_at, create_by, update_by) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
         String currentDateTime = dateFormat.format(new Date());
-
         String csvFileName="";
         switch (sourceUrl){
             case "vietcombank.com" :
@@ -353,7 +352,7 @@ public class Extract {
                 if (crawlSuccess) {
                     System.out.println("Crawl operation successful.");
                     try {
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
                         String currentDateTime = dateFormat.format(new Date());
 
                         String csvFileName = "";
