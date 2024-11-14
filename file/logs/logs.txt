@@ -76,3 +76,21 @@ HH:mm:ss dd/MM/yyyy - 22:43:51 13/11/2024
 Chạy script data thành công	
 HH:mm:ss dd/MM/yyyy - 22:44:11 13/11/2024
 -----
+Error connect control
+Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.	
+HH:mm:ss dd/MM/yyyy - 08:21:55 14/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:23:34 14/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:24:55 14/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:26:36 14/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:27:28 14/11/2024
+-----

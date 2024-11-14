@@ -22,7 +22,7 @@ public class Extract {
         String insertSql = "INSERT INTO data_file (df_config_id, name, row_count, status, note, created_at, update_at, create_by, update_by) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmm");
         String currentDateTime = dateFormat.format(new Date());
 
         String csvFileName = "";
@@ -58,13 +58,11 @@ public class Extract {
 
             preparedStatement.executeUpdate();
 
-            // Retrieve the generated keys (including the ID of the inserted row)
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
 
             if (resultSet.next()) {
                 long generatedId = resultSet.getLong(1);
 
-                // Create a DataFile object with the inserted data
                 DataFile dataFile = new DataFile();
                 dataFile.setId(generatedId);
                 dataFile.setDfConfigId(dfConfigId);
@@ -75,7 +73,6 @@ public class Extract {
 
                 return dataFile;
             } else {
-                // Handle the case where no generated keys are available
                 return null;
             }
         }
@@ -217,7 +214,11 @@ public class Extract {
 
 
     public static void main(String[] args) throws SQLException, IOException {
-        // 1. đọc file config.property
+        /*Chú thích:
+        - Status: NEW (N), PROCESS (P), COMPLETE (C), ERROR (E)
+                - Destination: FILE (F), STAGING (S), WAREHOUSE (W), MART (M)*/
+
+        // 1. đọc file config.properties
         // 2.connect db
         Connection connect = new GetConnection().getConnection("control");
         Extract n = new Extract();
@@ -256,7 +257,7 @@ public class Extract {
                     // 9. kiểm tra source
                     // 9.3 kiểm tra chạy thành công hay không
                     if (crawlSuccess) {
-                        String csvFileName = dataFileConfig.getSourcePath() + "_data_" + new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()) + ".csv";
+                        String csvFileName = dataFileConfig.getSourcePath() + "_data_" + new SimpleDateFormat("yyyyMMdd_HHmm").format(new Date()) + ".csv";
                         // 9.5 cập nhật data_file thành C
                         n.updateStatus((int) dataFile.getId(), "C", "Data import success");
                         // 9.6 cập nhât lại tên file
