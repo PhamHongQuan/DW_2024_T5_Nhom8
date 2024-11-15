@@ -1,11 +1,23 @@
+import io
 import os
 import time
+import sys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
 from selenium import webdriver
+
+# Đảm bảo rằng đầu ra được mã hóa theo UTF-8
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
+# Nhận ngày từ đối số
+if len(sys.argv) < 2:
+    print("Ngày không được truyền vào.")
+    sys.exit(1)
+
+input_date = sys.argv[1]  # Ngày được truyền từ Java
 
 # Thiết lập ChromeDriver
 chrome_options = Options()
@@ -19,7 +31,6 @@ url = "https://vietcombank.com.vn/vi-VN/KHCN/Cong-cu-Tien-ich/Ty-gia"
 driver.get(url)
 
 # Nhập ngày vào trường chọn ngày bằng JavaScript
-input_date = "01/11/2024"  # Ngày bạn muốn chọn
 date_picker = driver.find_element(By.ID, "datePicker")
 
 # Sử dụng JavaScript để thay đổi giá trị của trường chọn ngày
@@ -60,7 +71,6 @@ for rate in exchange_rates:
 df = pd.DataFrame(data)
 
 # Chuyển định dạng ngày sang yyyyMMdd
-formatted_date = input_date.replace('/', '')  # Đây là cách loại bỏ dấu '/' nếu bạn muốn
 formatted_date = f"{input_date[6:]}{input_date[3:5]}{input_date[:2]}"  # Đổi lại thành yyyyMMdd
 
 # Lưu dữ liệu vào file CSV
@@ -73,7 +83,6 @@ excel_filename = f"{folder_selected}/vietcombank_data_{formatted_date}.csv"
 # Lưu DataFrame ra file CSV với mã hóa UTF-8
 df.to_csv(excel_filename, index=False, encoding="utf-8-sig")
 print("Data saved to", excel_filename)
-
 
 # Đóng trình duyệt
 driver.quit()
