@@ -5,9 +5,13 @@ import sys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 from webdriver_manager.chrome import ChromeDriverManager
+
 import pandas as pd
 from selenium import webdriver
+import pyperclip  # Thư viện hỗ trợ copy/paste
 
 # Đảm bảo rằng đầu ra được mã hóa theo UTF-8
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
@@ -19,9 +23,11 @@ if len(sys.argv) < 2:
 
 input_date = sys.argv[1]  # Ngày được truyền từ Java
 
+# input_date = "01/11/2024"  # Ngày cần chọn
+
 # Thiết lập ChromeDriver
 chrome_options = Options()
-chrome_options.headless = True  # Chạy ở chế độ headless (không hiển thị trình duyệt)
+chrome_options.headless = False  # Để dễ kiểm tra (True nếu không cần hiển thị trình duyệt)
 
 # Khởi tạo trình duyệt
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
@@ -30,18 +36,32 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 url = "https://vietcombank.com.vn/vi-VN/KHCN/Cong-cu-Tien-ich/Ty-gia"
 driver.get(url)
 
-# Nhập ngày vào trường chọn ngày bằng JavaScript
+# Lấy ô chọn ngày
 date_picker = driver.find_element(By.ID, "datePicker")
 
-# Sử dụng JavaScript để thay đổi giá trị của trường chọn ngày
-driver.execute_script(f"arguments[0].value = '{input_date}'", date_picker)
+# Copy giá trị ngày vào clipboard
+pyperclip.copy(input_date)
 
-# Đợi vài giây để trang web cập nhật sau khi nhập ngày
-time.sleep(3)
 
-# Kiểm tra lại giá trị đã nhập vào trường ngày (tránh trường hợp nhập sai định dạng)
-current_value = date_picker.get_attribute("value")
-print(f"Ngày đã nhập vào trường chọn ngày: {current_value}")
+action = ActionChains(driver)
+action.move_to_element(date_picker).click().perform()
+
+
+
+action = ActionChains(driver)
+action.key_down(Keys.CONTROL).send_keys('a').key_up(Keys.CONTROL).perform()  # Chọn tất cả nội dung
+action.key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform()  # Dán nội dung từ clipboard
+
+# Đợi vài giây để trang web cập nhật
+time.sleep(5)
+
+# # Tìm và nhấn vào nút "Xem thêm"
+# try:
+#     load_more_button = driver.find_element(By.ID, "load-more-label")  # Dùng ID của nút "Xem thêm"
+#     load_more_button.click()  # Nhấn nút "Xem thêm"
+#     time.sleep(3)  # Đợi vài giây để tải thêm dữ liệu
+# except Exception as e:
+#     print("Không tìm thấy nút 'Xem thêm'. Lỗi:", e)
 
 # Trích xuất dữ liệu tỷ giá từ trang web
 exchange_rates = driver.find_elements(By.CSS_SELECTOR, "table.table-responsive tbody tr")

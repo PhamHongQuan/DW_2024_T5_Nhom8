@@ -19,7 +19,7 @@ if len(sys.argv) < 2:
     sys.exit(1)
 
 input_date = sys.argv[1]  # Ngày được truyền từ Java
-
+# input_date = "01/11/2024"
 # Đường dẫn của thư mục bạn muốn lưu file
 output_folder = "D:\\DW_2024_T5_Nhom8\\file\\crawl\\bidv"
 url = "https://bidv.com.vn/vn/ty-gia-ngoai-te"
