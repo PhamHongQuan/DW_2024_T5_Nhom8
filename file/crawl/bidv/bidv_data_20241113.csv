@@ -1,26 +1,26 @@
-Ký hiệu ngoại tệ,Tên ngoại tệ,Mua tiền mặt và Séc,Mua chuyển khoản,Bán,Bank Name,Date
+﻿Ký hiệu ngoại tệ,Tên ngoại tệ,Mua tiền mặt và Séc,Mua chuyển khoản,Bán,Bank Name,Date
 USD,Dollar Mỹ,"25,180","25,180","25,502",BIDV,2024-11-13
 USD(1-2-5),Dollar,"24,173",-,-,BIDV,2024-11-13
 USD(10-20),Dollar,"24,173",-,-,BIDV,2024-11-13
-GBP,Bảng Anh,"31,905","31,979","32,803",BIDV,2024-11-13
-HKD,Dollar Hồng Kông,"3,205","3,212","3,305",BIDV,2024-11-13
-CHF,Franc Thụy Sỹ,"28,377","28,406","29,168",BIDV,2024-11-13
-JPY,Yên Nhật,160.52,160.78,167.51,BIDV,2024-11-13
-THB,Baht Thái Lan,671.33,704.73,753.11,BIDV,2024-11-13
-AUD,Dollar Australia,"16,405","16,430","16,814",BIDV,2024-11-13
-CAD,Dollar Canada,"18,003","18,028","18,454",BIDV,2024-11-13
-SGD,Dollar Singapore,"18,542","18,619","19,246",BIDV,2024-11-13
-SEK,Krone Thụy Điển,-,"2,287","2,364",BIDV,2024-11-13
+GBP,Bảng Anh,"31,878","31,951","32,782",BIDV,2024-11-13
+HKD,Dollar Hồng Kông,"3,204","3,211","3,305",BIDV,2024-11-13
+CHF,Franc Thụy Sỹ,"28,339","28,367","29,115",BIDV,2024-11-13
+JPY,Yên Nhật,160.12,160.37,167.1,BIDV,2024-11-13
+THB,Baht Thái Lan,669.98,703.31,751.16,BIDV,2024-11-13
+AUD,Dollar Australia,"16,377","16,402","16,793",BIDV,2024-11-13
+CAD,Dollar Canada,"17,997","18,022","18,447",BIDV,2024-11-13
+SGD,Dollar Singapore,"18,506","18,582","19,219",BIDV,2024-11-13
+SEK,Krone Thụy Điển,-,"2,283","2,360",BIDV,2024-11-13
 LAK,Kip Lào,-,0.88,1.22,BIDV,2024-11-13
-DKK,Krone Đan Mạch,-,"3,550","3,669",BIDV,2024-11-13
-NOK,Krone Na Uy,-,"2,250","2,327",BIDV,2024-11-13
-CNY,Nhân Dân Tệ,-,"3,473","3,573",BIDV,2024-11-13
+DKK,Krone Đan Mạch,-,"3,546","3,664",BIDV,2024-11-13
+NOK,Krone Na Uy,-,"2,246","2,322",BIDV,2024-11-13
+CNY,Nhân Dân Tệ,-,"3,472","3,572",BIDV,2024-11-13
 RUB,Rub Nga,-,-,-,BIDV,2024-11-13
-NZD,Dollar New Zealand,"14,755","14,847","15,256",BIDV,2024-11-13
-KRW,Won Hàn Quốc,15.81,17.47,18.65,BIDV,2024-11-13
-EUR,Euro,"26,476","26,519","27,649",BIDV,2024-11-13
-TWD,Dollar Đài Loan,705.76,-,853.41,BIDV,2024-11-13
-MYR,Ringgit Malaysia,"5,331.49",-,"6,007.13",BIDV,2024-11-13
-SAR,Saudi Arabian Riyals,-,"6,631.56","6,980.31",BIDV,2024-11-13
-KWD,Kuwait Dinar,-,"80,247","85,226",BIDV,2024-11-13
+NZD,Dollar New Zealand,"14,738","14,830","15,245",BIDV,2024-11-13
+KRW,Won Hàn Quốc,15.8,17.46,18.64,BIDV,2024-11-13
+EUR,Euro,"26,446","26,489","27,618",BIDV,2024-11-13
+TWD,Dollar Đài Loan,704.67,-,851.57,BIDV,2024-11-13
+MYR,Ringgit Malaysia,"5,313.57",-,"5,988.26",BIDV,2024-11-13
+SAR,Saudi Arabian Riyals,-,"6,634.91","6,976.03",BIDV,2024-11-13
+KWD,Kuwait Dinar,-,"80,234","85,240",BIDV,2024-11-13
 XAU,Vàng SJC 1 lượng (đơn vị: 1000đ),-,-,"84,000",BIDV,2024-11-13
