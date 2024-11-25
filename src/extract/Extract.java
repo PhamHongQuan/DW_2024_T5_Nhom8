@@ -15,44 +15,55 @@ import java.util.concurrent.Executors;
 
 public class Extract {
     Connection conn = null;
-    PreparedStatement pre_control = null;
 
+    // Tạo tên file CSV dựa trên nguồn dữ liệu
+    private static String createCSVFileName(String sourcePath) {
+        // Bước 10.6: Cập nhật lại tên file
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+        String currentDateTime = dateFormat.format(new Date());
+        switch (sourcePath) {
+            case "vietcombank.com":
+                return "vietcombank_data_" + currentDateTime + ".csv";
+            case "bidv.com":
+                return "bidv_data_" + currentDateTime + ".csv";
+            default:
+                throw new IllegalStateException("Source path không hợp lệ: " + sourcePath);
+        }
+    }
+
+    // Kiểm tra xem file đã từng được crawl chưa
     private boolean isFileAlreadyCrawled(String fileName, String inputDate) throws SQLException, IOException, ParseException {
         conn = new GetConnection().getConnection("control");
 
-        // Chuyển đổi ngày từ "dd/MM/yyyy" thành "yyyyMMdd"
+        // Chuyển đổi ngày sang định dạng chuẩn
         String formattedDate = new SimpleDateFormat("yyyyMMdd").format(new SimpleDateFormat("dd/MM/yyyy").parse(inputDate));
 
         // Tạo tên file
         String generatedFileName = fileName.split("\\.")[0] + "_data_" + formattedDate + ".csv";
 
-        // Kiểm tra xem tên file có tồn tại trong cơ sở dữ liệu không
+        // Truy vấn kiểm tra trong cơ sở dữ liệu
         String query = "SELECT COUNT(*) AS file_count FROM data_file WHERE name = ?";
         try (PreparedStatement preparedStatement = conn.prepareStatement(query)) {
             preparedStatement.setString(1, generatedFileName);
             ResultSet resultSet = preparedStatement.executeQuery();
-            return resultSet.next() && resultSet.getInt("file_count") > 0;  // Trả về true nếu file đã tồn tại
+            return resultSet.next() && resultSet.getInt("file_count") > 0; // Trả về true nếu file đã tồn tại
         }
     }
 
 
-    // Thêm dữ liệu mới vào bảng data_file và trả về đối tượng DataFile.
-    public DataFile addDataFile(int dfConfigId, String sourceUrl, String inputDate) throws SQLException, IOException {
+    // Thêm dữ liệu mới vào bảng data_file
+    public DataFile addDataFile(int dfConfigId, String sourceUrl, String inputDate) throws SQLException, IOException, ParseException {
         conn = new GetConnection().getConnection("control");
         String insertSql = "INSERT INTO data_file (df_config_id, name, row_count, status, note, created_at, update_at, create_by, update_by) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        // Chuyển đổi inputDate từ "dd/MM/yyyy" sang "yyyyMMdd"
+        // Chuyển đổi ngày sang định dạng chuẩn
         SimpleDateFormat inputDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat outputDateFormat = new SimpleDateFormat("yyyyMMdd");
-        Date date = null;
-        try {
-            date = inputDateFormat.parse(inputDate);  // Parse inputDate vào kiểu Date
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        String formattedDate = outputDateFormat.format(date);  // Định dạng lại ngày
+        Date date = inputDateFormat.parse(inputDate);
+        String formattedDate = outputDateFormat.format(date);
 
+        // Tạo tên file
         String csvFileName = "";
         switch (sourceUrl) {
             case "vietcombank.com":
@@ -63,16 +74,17 @@ public class Extract {
                 break;
         }
 
+        // Thực hiện thêm vào cơ sở dữ liệu
         try (PreparedStatement preparedStatement = conn.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setLong(1, dfConfigId);  // df_config_id
-            preparedStatement.setString(2, csvFileName);  // Tên file với ngày đã chuyển đổi
-            preparedStatement.setInt(3, 24);  // row_count
-            preparedStatement.setString(4, "N");  // status
-            preparedStatement.setString(5, "Data imported successfully");  // note
-            preparedStatement.setTimestamp(6, new Timestamp(new Date().getTime()));  // created_at
-            preparedStatement.setTimestamp(7, new Timestamp(new Date().getTime()));  // update_at
-            preparedStatement.setString(8, "Nghĩa");  // create_by
-            preparedStatement.setString(9, null);  // update_by (null)
+            preparedStatement.setLong(1, dfConfigId);
+            preparedStatement.setString(2, csvFileName);
+            preparedStatement.setInt(3, 24);
+            preparedStatement.setString(4, "N");
+            preparedStatement.setString(5, "Data imported successfully");
+            preparedStatement.setTimestamp(6, new Timestamp(new Date().getTime()));
+            preparedStatement.setTimestamp(7, new Timestamp(new Date().getTime()));
+            preparedStatement.setString(8, "Nghĩa");
+            preparedStatement.setString(9, null);
 
             preparedStatement.executeUpdate();
 
@@ -83,24 +95,24 @@ public class Extract {
                 DataFile dataFile = new DataFile();
                 dataFile.setId(generatedId);
                 dataFile.setDfConfigId(dfConfigId);
-                dataFile.setName(csvFileName);  // Gán tên file vào đối tượng DataFile
+                dataFile.setName(csvFileName);
                 dataFile.setRowCount(24);
                 dataFile.setStatus("N");
                 dataFile.setNote("Data imported successfully");
-
+                System.out.println("Crawl dữ liệu hoàn tất cho file: " + dataFile.getName());
                 return dataFile;
             } else {
+                System.out.println("Crawl dữ liệu cho file không thành công");
                 return null;
             }
         }
     }
 
-    // Kiểm tra và lấy cấu hình DataFileConfig theo ID từ bảng data_file_configs
-    public DataFileConfig check(int idFileConfig) throws IOException {
+    // Kiểm tra và lấy cấu hình DataFileConfig theo ID
+    public DataFileConfig loadDataConfig(int idFileConfig) throws IOException {
         conn = new GetConnection().getConnection("control");
         DataFileConfig dataFileConfig = null;
-        String query = "SELECT data_file_configs.id, data_file_configs.source_path, data_file_configs.location,data_file_configs.format,data_file_configs.colums, data_file_configs.destination FROM data_file_configs " +
-                "WHERE data_file_configs.id = ?";
+        String query = "SELECT * FROM data_file_configs WHERE id = ?";
         try (PreparedStatement preparedStatement = conn.prepareStatement(query)) {
             preparedStatement.setInt(1, idFileConfig);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -114,8 +126,7 @@ public class Extract {
                 dataFileConfig.setColumns(resultSet.getString("colums"));
                 dataFileConfig.setDestination(resultSet.getString("destination"));
             } else {
-                new GetConnection().logFile("Không tìm thấy dữ liệu cho idFileConfig:");
-                System.out.println("Không tìm thấy dữ liệu cho idFileConfig: " + idFileConfig);
+                return null;
             }
 
         } catch (SQLException e) {
@@ -127,19 +138,25 @@ public class Extract {
     public static boolean runScript(String urlSource, String inputDate) throws IOException {
         boolean success = false;
         switch (urlSource) {
+            // 7.1
             case "vietcombank.com":
-                if (new RunPythonScript().runScript("D:\\DW_2024_T5_Nhom8\\module\\crawl\\vcb_crawl.py", inputDate)) {
+                // 7.1.1
+                if (new RunPythonScript().runScriptPy("D:\\DW_2024_T5_Nhom8\\module\\crawl\\vcb_crawl.py", inputDate)) {
                     System.out.println("Chạy script data thành công");
                     success = true;
                 } else {
+                    // 7.1.2
                     System.out.println("Chạy script data không thành công");
                 }
                 break;
+            // 7.2
             case "bidv.com":
-                if (new RunPythonScript().runScript("D:\\DW_2024_T5_Nhom8\\module\\crawl\\bidv_crawl.py", inputDate)) {
+                // 7.2.1
+                if (new RunPythonScript().runScriptPy("D:\\DW_2024_T5_Nhom8\\module\\crawl\\bidv_crawl.py", inputDate)) {
                     System.out.println("Chạy script data thành công");
                     success = true;
                 } else {
+                    // 7.2.2
                     System.out.println("Chạy script data không thành công");
                 }
                 break;
@@ -153,15 +170,6 @@ public class Extract {
             updateStatement.setString(1, newStatus);
             updateStatement.setString(2, note);
             updateStatement.setLong(3, dataFileId);
-            updateStatement.executeUpdate();
-        }
-    }
-
-    private void updateFileName(int dataFileId, String actualFileName) throws SQLException {
-        String updateStatusAndFileNameSql = "UPDATE data_file SET name = ? WHERE id = ?";
-        try (PreparedStatement updateStatement = conn.prepareStatement(updateStatusAndFileNameSql)) {
-            updateStatement.setString(1, actualFileName);
-            updateStatement.setLong(2, dataFileId);
             updateStatement.executeUpdate();
         }
     }
@@ -217,46 +225,82 @@ public class Extract {
     }
 
     public static void main(String[] args) throws SQLException, IOException {
-        Connection connect = new GetConnection().getConnection("control");
-        Extract n = new Extract();
-        String inputDate = "01/11/2024";
 
-        if (n.checkProcessing("P", "F")) {
-            System.out.println("Co tien trinh dang chay");
+        String inputDate = "22/11/2024";
+
+        // Chuẩn bị kết nối và cấu hình
+        Extract ex = new Extract();
+
+        // Bước 1: Đọc file config.property
+        // Bước 2: Kết nối database (thực hiện tự động trong loadConfig và GetConnection)
+        List<Integer> configIds = ex.loadConfig();
+
+        // 3. Kiểm tra có tiến trình đang chạy hay không
+        if (ex.checkProcessing("P", "F")) {
+            System.out.println("Có tiến trình đang chạy");
             System.exit(0);
         }
 
-        List<Integer> dfConfigIds = n.loadConfig();
+
+        //  Khởi tạo ExecutorService để xử lý song song
         ExecutorService executor = Executors.newFixedThreadPool(2);
 
-        for (Integer dfConfigId : dfConfigIds) {
+        for (Integer configId : configIds) {
             executor.submit(() -> {
-                DataFileConfig dataFileConfig = null;
                 try {
-                    dataFileConfig = n.check(dfConfigId);
+                    // Bước 4: Load config source và xử lý từng cấu hình
+                    // Lấy thông tin cấu hình dữ liệu
+                    DataFileConfig dataFileConfig = ex.loadDataConfig(configId);
 
-                    if (dataFileConfig != null) {
-                        if (n.isFileAlreadyCrawled(dataFileConfig.getSourcePath(), inputDate)) {
-                            System.out.println("File đã được crawl trước đó: " + dataFileConfig.getSourcePath());
-                            return;
-                        }
-                        boolean runScriptStatus = Extract.runScript(dataFileConfig.getSourcePath(), inputDate);
-
-                        if (runScriptStatus) {
-                            DataFile dataFile = n.addDataFile(dfConfigId, dataFileConfig.getSourcePath(), inputDate);  // Truyền thêm inputDate
-                            if (dataFile != null) {
-                                n.updateStatus((int) dataFile.getId(), "P", null);  // Cập nhật trạng thái thành "P" (Processing)
-                                System.out.println("Crawl dữ liệu thành công cho config ID: " + dfConfigId);
-                            }
-                        }
+                    // 5. Kiểm tra đã có dữ liệu trong data_file_config chưa
+                    if (dataFileConfig == null) {
+                        // 5.1 Thông báo chưa có dữ liệu trong data_file_config
+                        System.out.println("Không có dữ liệu trong bảng data_file_config");
+                        new GetConnection().logFile("Không tìm thấy dữ liệu cho idFileConfig:");
+                        return;
                     }
-                } catch (IOException | SQLException e) {
+
+                    // Bước 6: Kiểm tra file đã được crawl chưa
+                    if (ex.isFileAlreadyCrawled(dataFileConfig.getSourcePath(), inputDate)) {
+                        // 6.1 Thông báo đã từng được crawl rồi
+                        System.out.println("File đã được crawl trước đó: " + dataFileConfig.getSourcePath());
+                        return;
+                    }
+
+                    // Bước 7: Chạy script để crawl dữ liệu
+                    boolean crawl = Extract.runScript(dataFileConfig.getSourcePath(), inputDate);
+
+                    // Bước 8: Kiểm tra trạng thái crawl thành công hay không
+                    if (crawl) {
+                        // 9. Thông báo thành công và Thêm dòng mới vào data_file dựa vào id của data_file_configs
+                        System.out.println("Crawl dữ liệu thành công.");
+                        DataFile newDataFile = ex.addDataFile(configId, dataFileConfig.getSourcePath(), inputDate);
+                        // 10 Cập nhật trạng thái data_file sang "P"
+                        ex.updateStatus((int) newDataFile.getId(), "P", "Processing");
+
+                        // 11. Kiểm tra xem đối tượng newDataFile được tạo thành công không
+                        if (newDataFile != null) {
+                            String csvFileName = createCSVFileName(dataFileConfig.getSourcePath());
+                            // 11.2 Cập nhật trạng thái file thành "C" khi hoàn thành
+                            ex.updateStatus((int) newDataFile.getId(), "C", "Data import success");
+                        }else {
+                            // 11.1 Thông báo Chưa thêm được đối tượng mới vào bảng data_file
+                            System.out.println("Chưa thêm được đối tượng mới vào bảng data_file");
+                        }
+                    } else {
+                        // 8.1 Thông báo crawl thất bại
+                        System.out.println("Crawl operation failed.");
+                        // Cập nhật trạng thái file thành E và ghi log
+                        new GetConnection().logFile("Crawl operation failed for source: " + dataFileConfig.getSourcePath());
+                        ex.updateStatus((int) dataFileConfig.getId(), "E", "Data import error");
+                    }
+                } catch (Exception e) {
                     e.printStackTrace();
-                } catch (ParseException e) {
-                    throw new RuntimeException(e);
                 }
             });
         }
+
+        // Bước 12: Dừng executor sau khi hoàn thành
         executor.shutdown();
     }
 }
