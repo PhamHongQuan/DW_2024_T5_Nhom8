@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class RunPythonScript {
-    public static boolean runScript(String scriptPath, String inputDate) {
+    public static boolean runScriptPy(String scriptPath, String inputDate) {
         try {
             // Truyền ngày vào script Python qua đối số
             ProcessBuilder processBuilder = new ProcessBuilder("python", scriptPath, inputDate);
@@ -36,17 +36,25 @@ public class RunPythonScript {
         }
     }
 
-//    public static void main(String[] args) {
-//        // Đường dẫn đến script Python (có thể thay đổi)
-//        String pythonScriptPath = "D:\\DW_2024_T5_Nhom8\\module\\crawl\\bidv_crawl.py";
-//        String inputDate = "01/11/2024";  // Ngày mà bạn muốn crawl, có thể thay đổi
-//
-//        boolean scriptResult = runScript(pythonScriptPath, targetDate);
-//
-//        if (scriptResult) {
+    public static void main(String[] args) {
+        // Đường dẫn đến script Python (có thể thay đổi)
+        String pythonScriptPath1 = "D:\\DW_2024_T5_Nhom8\\module\\crawl\\bidv_crawl.py";
+        String pythonScriptPath2 = "D:\\DW_2024_T5_Nhom8\\module\\crawl\\vcb_crawl.py";
+        String inputDate = "01/11/2024";  // Ngày mà bạn muốn crawl, có thể thay đổi
+
+//        boolean scriptResult1 = runScriptPy(pythonScriptPath1, inputDate);
+        boolean scriptResult2 = runScriptPy(pythonScriptPath2, inputDate);
+
+//        if (scriptResult1) {
 //            System.out.println("Script executed successfully.");
 //        } else {
 //            System.out.println("Script failed.");
 //        }
-//    }
+
+        if (scriptResult2) {
+            System.out.println("Script executed successfully.");
+        } else {
+            System.out.println("Script failed.");
+        }
+    }
 }
