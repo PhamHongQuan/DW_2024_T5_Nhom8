@@ -1,110 +1,373 @@
-Unknown file .\config\config.properties
-.\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:45:33 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:22:36 07/11/2024
 -----
-Unknown file ../module/config/config.properties
-..\module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:46:27 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:32:37 07/11/2024
 -----
-Unknown file ../module/config/config.properties
-..\module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:46:45 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:33:23 07/11/2024
 -----
-Unknown file ../module/config/config.properties
-..\module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:48:26 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:52:47 07/11/2024
 -----
-Unknown file ../module/config/config.properties
-..\module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:49:23 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:53:32 07/11/2024
 -----
-Unknown file ..\module\config\config.properties
-..\module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:50:13 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:01:21 07/11/2024
 -----
-Unknown file ..module/config/config.properties
-..module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:51:32 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:02:05 07/11/2024
 -----
-Unknown file ..module/config/config.properties
-..module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:52:14 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:12:54 07/11/2024
 -----
-Unknown file ..module/config/config.properties
-..module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:55:29 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:13:54 07/11/2024
 -----
-Unknown file ..module/config/config.properties
-..module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:55:53 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:18:29 07/11/2024
 -----
-Unknown file ..module/config/config.properties
-..module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:56:47 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:19:06 07/11/2024
 -----
-Unknown file ..module/config/config.properties
-..module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:56:57 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:28:51 07/11/2024
 -----
-Unknown file ..module/config/config.properties
-..module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:57:10 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:29:53 07/11/2024
 -----
-Unknown file ..module/config/config.properties
-..module\config\config.properties (The system cannot find the path specified)	
-HH:mm:ss dd/MM/yyyy - 19:57:24 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:30:56 07/11/2024
 -----
-driver not connect
-com.mysql.jdbc.Driver	
-HH:mm:ss dd/MM/yyyy - 19:59:29 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:31:41 07/11/2024
 -----
-driver not connect
-com.mysql.jdbc.Driver	
-HH:mm:ss dd/MM/yyyy - 20:00:49 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:17:05 13/11/2024
 -----
-driver not connect
-com.mysql.jdbc.Driver	
-HH:mm:ss dd/MM/yyyy - 20:01:11 03/11/2024
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 09:18:32 13/11/2024
 -----
-driver not connect
-com.mysql.jdbc.Driver	
-HH:mm:ss dd/MM/yyyy - 20:05:46 03/11/2024
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 09:18:32 13/11/2024
 -----
-driver not connect
-com.mysql.jdbc.Driver	
-HH:mm:ss dd/MM/yyyy - 20:12:46 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 22:27:23 13/11/2024
 -----
-driver not connect
-com.mysql.jdbc.Driver	
-HH:mm:ss dd/MM/yyyy - 20:14:07 03/11/2024
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 22:28:29 13/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 22:35:41 13/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 22:36:01 13/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 22:40:43 13/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 22:41:03 13/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 22:43:51 13/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 22:44:11 13/11/2024
 -----
 Error connect control
 Communications link failure
 
 The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.	
-HH:mm:ss dd/MM/yyyy - 22:20:42 04/11/2024
+HH:mm:ss dd/MM/yyyy - 08:21:55 14/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:23:34 14/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:24:55 14/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:26:36 14/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:27:28 14/11/2024
 -----
 Error connect control
 Communications link failure
 
 The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.	
-HH:mm:ss dd/MM/yyyy - 22:25:56 04/11/2024
+HH:mm:ss dd/MM/yyyy - 16:18:40 05/11/2024
+-----
+Unknown file ../module/config/config.properties
+..\module\config\config.properties (The system cannot find the path specified)	
+HH:mm:ss dd/MM/yyyy - 16:22:37 05/11/2024
 -----
 Chạy script data không thành công	
-HH:mm:ss dd/MM/yyyy - 22:30:07 04/11/2024
+HH:mm:ss dd/MM/yyyy - 16:30:57 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:30:57 05/11/2024
 -----
 Chạy script data không thành công	
-HH:mm:ss dd/MM/yyyy - 22:30:07 04/11/2024
+HH:mm:ss dd/MM/yyyy - 16:30:59 05/11/2024
 -----
 Crawl operation failed.	
-HH:mm:ss dd/MM/yyyy - 22:30:07 04/11/2024
+HH:mm:ss dd/MM/yyyy - 16:30:59 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:32:23 05/11/2024
 -----
 Crawl operation failed.	
-HH:mm:ss dd/MM/yyyy - 22:30:07 04/11/2024
+HH:mm:ss dd/MM/yyyy - 16:32:23 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:32:24 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:32:24 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:36:48 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:36:48 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:36:48 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:36:48 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:38:17 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:38:17 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:38:18 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:38:18 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:38:33 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:38:33 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:38:34 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:38:34 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:39:00 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:39:00 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:39:00 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:39:00 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:41:10 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:41:10 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 16:41:10 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 16:41:10 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 20:32:22 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 20:32:22 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 20:32:22 05/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 20:32:22 05/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 08:14:15 07/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 08:14:15 07/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 08:14:18 07/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 08:14:18 07/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 08:21:20 07/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 08:21:20 07/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 08:21:21 07/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 08:21:21 07/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 08:21:51 07/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 08:21:51 07/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 08:21:51 07/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 08:21:51 07/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 08:22:20 07/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 08:22:20 07/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 08:22:21 07/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 08:22:21 07/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 08:29:33 07/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 08:29:33 07/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 08:29:35 07/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 08:29:35 07/11/2024
 -----
 Chạy script data thành công	
-HH:mm:ss dd/MM/yyyy - 22:31:42 04/11/2024
+HH:mm:ss dd/MM/yyyy - 08:30:16 07/11/2024
 -----
 Chạy script data thành công	
-HH:mm:ss dd/MM/yyyy - 22:32:15 04/11/2024
+HH:mm:ss dd/MM/yyyy - 08:30:45 07/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:13:05 07/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:13:52 07/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:16:14 07/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:17:12 07/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:20:22 07/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:21:07 07/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:23:04 07/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 09:23:49 07/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 13:54:07 12/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 13:54:42 12/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 14:00:10 12/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 14:00:40 12/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 14:01:51 12/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 14:02:22 12/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 14:06:31 12/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 14:07:54 12/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 14:12:05 12/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 14:12:39 12/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 13:29:29 13/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 13:29:57 13/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:13:33 14/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 08:14:07 14/11/2024
+-----
+Chạy script data không thành công	
+HH:mm:ss dd/MM/yyyy - 21:43:59 15/11/2024
+-----
+Crawl operation failed.	
+HH:mm:ss dd/MM/yyyy - 21:43:59 15/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 21:44:01 15/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 21:45:58 15/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 21:46:02 15/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 21:49:06 15/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 21:49:09 15/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 21:53:23 15/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 21:53:26 15/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 21:57:03 15/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 21:57:06 15/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 22:07:22 15/11/2024
+-----
+Chạy script data thành công	
+HH:mm:ss dd/MM/yyyy - 22:07:24 15/11/2024
 -----
