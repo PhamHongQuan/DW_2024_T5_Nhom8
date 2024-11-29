@@ -51,7 +51,7 @@ try:
 
             # Lấy ngày và thời gian hiện tại
             current_datetime = datetime.now().strftime("%Y%m%d")
-            current_datetime = datetime.now().strftime("%Y%m%d_%H%M")
+            current_datetime = datetime.now().strftime("%Y%m%d")
 
             # Tạo tên file với định dạng "vietcombank_data_<ngày>_<giờ>.xlsx"
             excel_filename = f"{folder_selected}/vietcombank_data_{current_datetime}.csv"

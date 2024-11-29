@@ -13,7 +13,7 @@ import java.util.Properties;
 public class Staging {
     String url_source = null;
     String[] url_sources = null;
-
+    boolean isTruncated = false;
     public static void main(String[] args) throws IOException {
         Staging staging = new Staging();
         staging.staging();
@@ -98,14 +98,25 @@ public class Staging {
                                     pre_control.executeUpdate();
                                     System.exit(0);
                                 }
+                                // 8.3.3 Xóa toàn bộ dữ liệu cũ
+                                if(!isTruncated) {
+                                    String stagingTable = "exchange_rate";
+                                    String truncateSql = "TRUNCATE TABLE " + stagingTable;
+                                    PreparedStatement preTruncate = conn_Staging.prepareStatement(truncateSql);
+                                    preTruncate.executeUpdate();
+                                    // 8.3.4 đặt lại giá trị của biến isTruncated là true
+                                    isTruncated = true;
+                                }
+
+                                // 8.4 import data từ file vào db staging
                                 int count = 0;
+                                System.out.println("file ề: "+ path);
                                 String sql = "LOAD DATA LOCAL INFILE '" + path.replace("\\", "\\\\") + "' " +
                                         "INTO TABLE exchange_rate " +
                                         "FIELDS TERMINATED BY ',' " +
                                         "OPTIONALLY ENCLOSED BY '\"' " +
                                         "IGNORE 1 LINES;";
                                 PreparedStatement pre_Staging = conn_Staging.prepareStatement(sql);
-                                // 8.4 import data từ file vào db staging
                                 try {
                                     count = pre_Staging.executeUpdate();
                                 } catch (Exception e) {
