@@ -60,9 +60,7 @@ public class Staging {
                             id = re.getInt("id");
                             filename = re.getString("name");
                             int row_count = re.getInt("row_count");
-                            String source_path = re.getString("source_path");
                             String location = re.getString("location");
-                            String format = re.getString("format");
                             String path = location + "\\"+filename;
                             File file = new File(path);
                             String sql4 = "UPDATE data_file SET status='E', "
@@ -74,8 +72,6 @@ public class Staging {
                             pre_control = conn.prepareStatement(sql3);
                             pre_control.executeUpdate();
                             // 8.2 Ktra file có tồn tại trong folder
-                            System.out.println(file.getAbsolutePath());
-                            System.out.println(file.exists());
                             if (!file.exists()) {
                                 // file không tồn tại - cập nhật status: E - thông báo
                                 pre_control = conn.prepareStatement(sql4);
@@ -97,20 +93,21 @@ public class Staging {
                                     pre_control = conn.prepareStatement(sql4);
                                     pre_control.executeUpdate();
                                     System.exit(0);
+                                } else {
+                                    // 8.3.3 Xóa toàn bộ dữ liệu cũ
+                                    if(!isTruncated) {
+                                        String stagingTable = "exchange_rate";
+                                        String truncateSql = "TRUNCATE TABLE " + stagingTable;
+                                        PreparedStatement preTruncate = conn_Staging.prepareStatement(truncateSql);
+                                        preTruncate.executeUpdate();
+                                        // 8.3.4 đặt lại giá trị của biến isTruncated là true
+                                        isTruncated = true;
+                                    }
                                 }
-                                // 8.3.3 Xóa toàn bộ dữ liệu cũ
-                                if(!isTruncated) {
-                                    String stagingTable = "exchange_rate";
-                                    String truncateSql = "TRUNCATE TABLE " + stagingTable;
-                                    PreparedStatement preTruncate = conn_Staging.prepareStatement(truncateSql);
-                                    preTruncate.executeUpdate();
-                                    // 8.3.4 đặt lại giá trị của biến isTruncated là true
-                                    isTruncated = true;
-                                }
+
 
                                 // 8.4 import data từ file vào db staging
                                 int count = 0;
-                                System.out.println("file ề: "+ path);
                                 String sql = "LOAD DATA LOCAL INFILE '" + path.replace("\\", "\\\\") + "' " +
                                         "INTO TABLE exchange_rate " +
                                         "FIELDS TERMINATED BY ',' " +
@@ -129,14 +126,14 @@ public class Staging {
                                             "SET status='C', destination = 'S', data_file.update_at=now() WHERE data_file.id=" + id;
                                     pre_control.close();
                                     pre_control = conn.prepareStatement(sql2);
-                                    // 8.5a cập nhật status: C, destination: S
+                                    // 8.5.1 cập nhật status: C, destination: S
                                     pre_control.executeUpdate();
                                 } else {
                                     String sql2 = "UPDATE data_file SET status='E', data_file.update_at=now() " +
                                             "WHERE id="+ id;
                                     pre_control.close();
                                     pre_control = conn.prepareStatement(sql2);
-                                    // 8.5b cập nhật status: E
+                                    // 8.5.2 cập nhật status: E
                                     pre_control.executeUpdate();
                                 }
                                 // 8.6 thông báo hoàn thành
