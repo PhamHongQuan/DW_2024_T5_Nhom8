@@ -18,7 +18,6 @@ public class Extract {
 
     // Tạo tên file CSV dựa trên nguồn dữ liệu
     private static String createCSVFileName(String sourcePath) {
-        // Bước 10.6: Cập nhật lại tên file
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
         String currentDateTime = dateFormat.format(new Date());
         switch (sourcePath) {

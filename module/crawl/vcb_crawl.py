@@ -145,7 +145,6 @@ excel_filename = f"{folder_selected}/vietcombank_data_{formatted_date}.csv"
 
 # Lưu DataFrame ra file CSV với mã hóa UTF-8
 df.to_csv(excel_filename, index=False, encoding="utf-8-sig")
-print("Data saved to", excel_filename)
 
 # Đóng trình duyệt
 driver.quit()
