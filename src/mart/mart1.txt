@@ -1,0 +1,146 @@
+package mart;
+
+import module.GetConnection;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.*;
+import java.util.ArrayList;
+
+public class Mart {
+    public static void Mart() throws SQLException, IOException {
+        Connection connControl = null;
+        PreparedStatement preControl = null;
+        try {
+            // 1. Kết nối với database control
+            connControl = new GetConnection().getConnection("control");
+
+            // 4. Kiểm tra trạng thái "p" && destination "M"
+            ResultSet rsProcessing = checkStatus(connControl, preControl, "p", "M");
+            if (rsProcessing.next()) {
+                System.out.println("Tồn tại tiến trình đang chạy.");
+                return;
+            }
+
+            // 5. Kiểm tra trạng thái "C" && destination "W"
+            ResultSet rsCompleted = checkStatus(connControl, preControl, "C", "W");
+            if (!rsCompleted.next()) {
+                System.out.println("Không có File ở warehouse.");
+                return;
+            }
+
+            // 6. Cập nhật trạng thái "P" và destination "M"
+            ArrayList<Integer> idArr = new ArrayList<>();
+            do {
+                int id = rsCompleted.getInt("id");
+                idArr.add(id);
+                updateDataFile(connControl, preControl, id, "P");
+                updateDataFileConfigs(connControl, preControl, id, "M");
+            } while (rsCompleted.next());
+
+            // 7 & 8. Kết nối đến database warehouse
+            Connection connWarehouse = new GetConnection().getConnection("warehouse");
+            updateErrConnect(preControl, connControl, idArr, "warehouse");
+
+            // 9 & 10. Kết nối đến database mart
+            Connection connMart = new GetConnection().getConnection("mart");
+            updateErrConnect(preControl, connControl, idArr, "mart");
+
+            // 11. Sử dụng database mart
+            executeSQL(connMart, "USE mart");
+
+            // 12. Truncate bảng
+            executeSQL(connMart, "TRUNCATE TABLE db_rename_avg");
+            executeSQL(connMart, "TRUNCATE TABLE db_rename_exchange");
+
+            // 13. Chạy procedure sao chép dữ liệu
+            callProcedure(connMart, "copyDB");
+
+            // 14. Đọc dữ liệu từ warehouse ghi vào mart
+            insertWhToMartAvg(connWarehouse, connMart, preControl, connControl, idArr);
+            insertWhToMartExchange(connWarehouse, connMart, preControl, connControl, idArr);
+
+            // 15. Rename bảng bằng procedure
+            callProcedure(connMart, "renameTable");
+
+            // 16 & 17. Đóng kết nối warehouse và mart
+            connWarehouse.close();
+            connMart.close();
+
+            // 18. Cập nhật trạng thái "C" trong database control
+            for (Integer id : idArr) {
+                updateDataFile(connControl, preControl, id, "C");
+            }
+
+            // 19. Ghi log thành công
+            writeLog("Chạy thành công", "LogSuccess");
+        } catch (SQLException e) {
+            handleError(e, "control");
+        } finally {
+            // 20. Đóng kết nối database control
+            if (connControl != null) {
+                connControl.close();
+            }
+        }
+    }
+
+    private static ResultSet checkStatus(Connection conn, PreparedStatement preControl, String status, String destination) throws SQLException {
+        String query = "SELECT data_file.id, data_file.name, data_file.row_count, " +
+                "data_file_configs.source_path, data_file_configs.location, " +
+                "data_file_configs.format, data_file_configs.colums, data_file_configs.destination " +
+                "FROM data_file " +
+                "JOIN data_file_configs ON data_file.df_config_id = data_file_configs.id " +
+                "WHERE data_file.status = ? AND data_file_configs.destination = ? " +
+                "AND data_file.update_at < CURRENT_TIMESTAMP " +
+                "ORDER BY data_file.update_at DESC LIMIT 2";
+        preControl = conn.prepareStatement(query);
+        preControl.setString(1, status);
+        preControl.setString(2, destination);
+        return preControl.executeQuery();
+    }
+
+    private static void updateDataFile(Connection conn, PreparedStatement preControl, int id, String status) throws SQLException {
+        String sql = "UPDATE data_file SET status = ?, update_at = NOW() WHERE id = ?";
+        preControl = conn.prepareStatement(sql);
+        preControl.setString(1, status);
+        preControl.setInt(2, id);
+        preControl.executeUpdate();
+    }
+
+    private static void updateDataFileConfigs(Connection conn, PreparedStatement preControl, int id, String destination) throws SQLException {
+        String sql = "UPDATE data_file_configs SET destination = ?, update_at = NOW() WHERE id = ?";
+        preControl = conn.prepareStatement(sql);
+        preControl.setString(1, destination);
+        preControl.setInt(2, id);
+        preControl.executeUpdate();
+    }
+
+    private static void executeSQL(Connection conn, String sql) throws SQLException {
+        Statement stmt = conn.createStatement();
+        stmt.execute(sql);
+    }
+
+    private static void callProcedure(Connection conn, String procedureName) throws SQLException {
+        CallableStatement callableStatement = conn.prepareCall("{CALL " + procedureName + "()}");
+        callableStatement.execute();
+    }
+
+    private static void writeLog(String message, String logType) throws IOException {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        String fileName = "D:\\logs\\" + logType + "-" + timestamp.toString().replaceAll("\\s", "").replace(":", "-") + ".txt";
+        try (PrintWriter writer = new PrintWriter(new FileWriter(fileName, true))) {
+            writer.println(message + " at " + timestamp);
+        }
+    }
+
+    private static void handleError(SQLException e, String location) throws IOException {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        String fileName = "D:\\logs\\LogERR-" + timestamp.toString().replaceAll("\\s", "").replace(":", "-") + ".txt";
+        try (PrintWriter writer = new PrintWriter(new FileWriter(fileName, true))) {
+            writer.println("Error at " + location + ": " + e.getMessage());
+            e.printStackTrace(writer);
+        }
+        System.exit(1);
+    }
+}
