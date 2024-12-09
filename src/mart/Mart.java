@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Mart {
     static Timestamp date = new Timestamp(System.currentTimeMillis());
     static String date_err = date.toString();
-    static String fileName = "D:\\LogERR" +
+    static String fileName = "D:\\dw_2024_t5_nhom8\\LogERR" +
             date_err.replaceAll("\\s", "")
             .replace(":", "-") + ".txt";
 
