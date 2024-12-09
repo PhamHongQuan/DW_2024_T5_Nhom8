@@ -1,7 +1,5 @@
 package mart;
 
-import mart.GetConnection2;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,7 +9,9 @@ import java.util.ArrayList;
 public class Mart {
     static Timestamp date = new Timestamp(System.currentTimeMillis());
     static String date_err = date.toString();
-    static String fileName = "D:\\LogERR" + date_err.replaceAll("\\s", "").replace(":", "-") + ".txt";
+    static String fileName = "D:\\LogERR" +
+            date_err.replaceAll("\\s", "")
+            .replace(":", "-") + ".txt";
 
     //	3. Truy vấn dữ liệu có trường là STATUS  từ bảng data_file_configs với điều kiện
 //	(data_file.update_at < CURRENT_TIMESTAMP )

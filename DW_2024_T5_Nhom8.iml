@@ -2,7 +2,7 @@
 <module type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="Python" name="Python">
-      <configuration sdkName="Python 3.13 (PythonEnviroment)" />
+      <configuration sdkName="Python 3.12" />
     </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
@@ -14,5 +14,6 @@
     <orderEntry type="jdk" jdkName="22" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="mysql-connector-java-5.1.24-bin" level="project" />
+    <orderEntry type="library" exported="" name="Python 3.12 interpreter library" level="application" />
   </component>
 </module>
