@@ -9,7 +9,8 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
 from selenium import webdriver
-import pyperclip  # Thư viện hỗ trợ copy/paste
+# Thư viện hỗ trợ copy/paste
+import pyperclip
 
 # Đảm bảo rằng đầu ra được mã hóa theo UTF-8
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
