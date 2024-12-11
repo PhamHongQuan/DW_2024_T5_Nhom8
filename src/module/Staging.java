@@ -23,7 +23,7 @@ public class Staging {
         System.out.println("start staging");
         Connection conn = null;
         PreparedStatement pre_control = null;
-        String link = "D:\\DW_2024_T5_Nhom8\\module\\config\\config.properties";
+        String link = "D:\\DW\\DW_2024_T5_Nhom8\\module\\config\\config.properties";
         // 1. Đọc file config.properties
         try {
             InputStream input = new FileInputStream(link);

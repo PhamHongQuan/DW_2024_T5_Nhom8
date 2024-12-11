@@ -10,6 +10,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 import os
 
+from module.crawl.bidvcrawl import output_folder
+
 # Đảm bảo rằng đầu ra được mã hóa theo UTF-8
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
@@ -99,13 +101,12 @@ finally:
 df = pd.DataFrame(data, columns=["Ký hiệu ngoại tệ", "Tên ngoại tệ", "Mua tiền mặt và Séc", "Mua chuyển khoản", "Bán"])
 df["Bank Name"] = bank_name
 df["Date"] = datetime.strptime(input_date, "%d/%m/%Y").strftime("%Y-%m-%d")
-ư
 # Lấy ngày và thời gian hiện tại
 current_datetime = datetime.now().strftime("%Y%m%d")
-current_datetime = datetime.now().strftime("%Y%m%d")ư
+current_datetime = datetime.now().strftime("%Y%m%d")
 # Định dạng tên file theo ngày được chọn
 formatted_date = datetime.strptime(input_date, "%d/%m/%Y").strftime("%Y%m%d")
-excel_filename = f"{output_folder}/bidv_data_{formatted_date}.csv"ư
+excel_filename = f"{output_folder}/bidv_data_{formatted_date}.csv"
 # Lưu DataFrame ra file CSV với mã hóa UTF-8
 df.to_csv(excel_filename, index=False, encoding="utf-8-sig")
 print(f"File CSV đã được lưu tại: {excel_filename}")

@@ -33,7 +33,7 @@ public class Extract {
     // Kiểm tra xem file đã từng được crawl chưa
     private boolean isFileAlreadyCrawled(String fileName, String inputDate) throws SQLException, IOException, ParseException {
         conn = new GetConnection().getConnection("control");
-
+        System.out.println(conn);
         // Chuyển đổi ngày sang định dạng chuẩn
         String formattedDate = new SimpleDateFormat("yyyyMMdd").format(new SimpleDateFormat("dd/MM/yyyy").parse(inputDate));
 
@@ -191,12 +191,13 @@ public class Extract {
 
     private List<Integer> loadConfig() throws SQLException, IOException {
         conn = new GetConnection().getConnection("control");
-        String link = "D:\\DW_2024_T5_Nhom8\\module\\config\\config.properties";
+        String link = "D:\\DW\\DW_2024_T5_Nhom8\\module\\config\\config.properties";
         List<Integer> dfConfigIds = new ArrayList<>();
         try (InputStream input = new FileInputStream(link)) {
             Properties properties = new Properties();
             properties.load(input);
             String urlSourceValue = properties.getProperty("url_source");
+            System.out.println(urlSourceValue);
             List<String> urlList = Arrays.asList(urlSourceValue.split(","));
             for (String url : urlList) {
                 int dfConfigId = getDataFileConfigId(url);
@@ -233,7 +234,7 @@ public class Extract {
         // Bước 1: Đọc file config.property
         // Bước 2: Kết nối database (thực hiện tự động trong loadConfig và GetConnection)
         List<Integer> configIds = ex.loadConfig();
-
+        System.out.println(configIds);
         // 3. Kiểm tra có tiến trình đang chạy hay không
         if (ex.checkProcessing("P", "F")) {
             System.out.println("Có tiến trình đang chạy");

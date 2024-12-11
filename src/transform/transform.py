@@ -7,7 +7,7 @@ import os
 #hàm ghi log
 def write_log(error_name, error_description):
     # Đường dẫn thư mục log
-    log_dir = "D:/DW_2024_T5_Nhom8/log"
+    log_dir = "D:/DW/DW_2024_T5_Nhom8/log"
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
 
@@ -24,12 +24,12 @@ def write_log(error_name, error_description):
         log_file.write(log_content)
 
     print(f"Log đã được ghi vào {log_file_path}")
-    
+
 
 try:
     config = configparser.ConfigParser()
     # 1. Đọc file config.properties
-    config.read('D:\DW_2024_T5_NHOM8\config.properties')
+    config.read('D:\DW\DW_2024_T5_NHOM8\config.properties')
 
     DB_CONFIG = {
         'host': config.get('DB', 'db_host'),
@@ -47,8 +47,8 @@ except (configparser.Error, ValueError, KeyError) as e:
     error_description = str(e)
     write_log(error_name, error_description)
     print(f"Lỗi khi đọc file config: {error_description}")
-    
-    
+
+
 class DatabaseConnection:
     # Lớp này chịu trách nhiệm tạo kết nối đến database dựa trên tên database (staging, warehouse, control)
     @staticmethod
@@ -125,7 +125,7 @@ class Transform:
             self.conn_staging.commit()
 
         print(f"Successfully updated destination for process_id {process_id} to 'W'.")
-        
+
     # def isSame_bankname
     def isSame_bankname(self):
         query = """
@@ -143,7 +143,7 @@ class Transform:
             result = cursor.fetchone()
             return result[0] == 0
 
-    
+
     # Hàm kiểm tra xem dữ liệu của cột currency_code và curreny.name có giống nhau ở hai bảng hay không (trả về true or false)
     # def isSame_currency
     def isSame_currencycode(self):
@@ -161,19 +161,19 @@ class Transform:
             # Nếu COUNT(1) = 0 thì tất cả currency_code đã tồn tại
             result = cursor.fetchone()
             return result[0] == 0
-    
+
     def transform_table(self, conn, query):
         # Thực hiện truy vấn transform dữ liệu và trả về True nếu thành công
         with conn.cursor() as cursor:
             rows_affected = cursor.execute(query)
             conn.commit()
         return rows_affected > 0
-    
+
     #transform data
     def transform_data(self):
-   
+
         queries = []
-        # 7.1. Kiểm tra dữ liệu cột bank_name của hai bảng staging.exchange_rate 
+        # 7.1. Kiểm tra dữ liệu cột bank_name của hai bảng staging.exchange_rate
         # và warehouse.bank_dim giống nhau không
         if not self.isSame_bankname():
             # 7.1.1.Transform bảng warehouse.bank_dim
@@ -191,7 +191,7 @@ class Transform:
                 """
             })
 
-        # 7.2. Kiểm tra dữ liệu của cột curency_code và currency_name của hai bảng staging.exhange_rate 
+        # 7.2. Kiểm tra dữ liệu của cột curency_code và currency_name của hai bảng staging.exhange_rate
         # và warehouse.currency_dim giống nhau không
         if not self.isSame_currencycode():
             # 7.2.1 Transform bảng warehouse.curreny_dim
@@ -247,14 +247,14 @@ class Transform:
             ;
             """
         })
-        
+
         for q in queries:
             print(f"Đang thực hiện: {q['description']}")
             if self.transform_table(self.conn_warehouse, q["query"]):
                 print(f"{q['description']} thành công.")
             else:
                 print(f"{q['description']} thất bại.")
-        
+
     def close_connections(self):
         # Đóng tất cả kết nối database khi hoàn tất
         self.conn_control.close()
@@ -304,7 +304,7 @@ if __name__ == "__main__":
         else:
             # 3.1. Thông báo Có tiến trình đang chạy
             print("Đã có tiến trình đang chạy.")
-        # 9. Đóng kết nối    
+        # 9. Đóng kết nối
         transform.close_connections()
     except Exception as e:
         # Ghi log nếu có lỗi xảy ra trong mã chính

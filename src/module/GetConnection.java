@@ -38,7 +38,7 @@ public class GetConnection {
     }
 
     public void logFile(String message) throws IOException {
-        FileWriter fw = new FileWriter("D:\\DW_2024_T5_Nhom8\\file\\logs\\logs.txt", true);
+        FileWriter fw = new FileWriter("D:\\DW\\DW_2024_T5_Nhom8\\file\\logs\\logs.txt", true);
         PrintWriter pw = new PrintWriter(fw);
         pw.println(message + "\t");
         pw.println("HH:mm:ss dd/MM/yyyy - " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss dd/MM/yyyy")));
@@ -47,7 +47,7 @@ public class GetConnection {
     }
 
     public Connection getConnection(String location) throws IOException {
-        String link = "D:\\DW_2024_T5_Nhom8\\module\\config\\config.properties";
+        String link = "D:\\DW\\DW_2024_T5_Nhom8\\module\\config\\config.properties";
         Connection result = null;
 
         // 3. ket noi db control
@@ -127,21 +127,25 @@ public class GetConnection {
         return result;
     }
 
-    public static void main(String[] args) {
-        GetConnection connectionTest = new GetConnection();
 
-        try {
-            Connection connection = connectionTest.getConnection("control");
-            if (connection != null && !connection.isClosed()) {
-                System.out.println("Kết nối thành công.");
-                connection.close(); // Đóng kết nối sau khi kiểm tra
-            } else {
-                System.out.println("Kết nối thất bại.");
+        public static void main(String[] args) {
+            // Tạo một đối tượng GetConnection
+            GetConnection connectionManager = new GetConnection();
+
+            // Kiểm tra kết nối đến "control"
+            try {
+                Connection connection = connectionManager.getConnection("control");
+                if (connection != null) {
+                    System.out.println("Kết nối thành công tới 'control'.");
+                    connection.close(); // Đóng kết nối sau khi kiểm tra
+                } else {
+                    System.out.println("Kết nối không thành công tới 'control'.");
+                }
+            } catch (IOException e) {
+                System.out.println("Lỗi trong quá trình xử lý file cấu hình: " + e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Lỗi không xác định: " + e.getMessage());
             }
-        } catch (IOException e) {
-            System.out.println("Lỗi IO: " + e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Lỗi không xác định: " + e.getMessage());
         }
-    }
+
 }

@@ -9,9 +9,7 @@ import java.util.ArrayList;
 public class Mart {
     static Timestamp date = new Timestamp(System.currentTimeMillis());
     static String date_err = date.toString();
-    static String fileName = "D:\\dw_2024_t5_nhom8\\LogERR" +
-            date_err.replaceAll("\\s", "")
-            .replace(":", "-") + ".txt";
+    static String fileName = "D:\\DW\\DW_2024_T5_Nhom8\\file\\logs\\LogERR" + date_err.replaceAll("\\s", "").replace(":", "-") + ".txt";
 
     //	3. Truy vấn dữ liệu có trường là STATUS  từ bảng data_file_configs với điều kiện
 //	(data_file.update_at < CURRENT_TIMESTAMP )
@@ -299,7 +297,7 @@ public class Mart {
             // TODO Auto-generated catch block
             Timestamp date = new Timestamp(System.currentTimeMillis());
             String date_err = date.toString();
-            String fileName = "D:\\logs\\LogERR" + date_err.replaceAll("\\s", "").replace(":", "-") + ".txt";
+            String fileName = "D:\\DW\\DW_2024_T5_Nhom8\\file\\logs\\LogERR" + date_err.replaceAll("\\s", "").replace(":", "-") + ".txt";
 
             PrintWriter writer = new PrintWriter(new FileWriter(fileName, true));
             writer.println("Error: " + e.getMessage());

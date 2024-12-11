@@ -2,6 +2,8 @@ import io
 import os
 import time
 import sys
+import requests  # Thêm thư viện requests
+import xml.etree.ElementTree as ET  # Thêm thư viện XML
 from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -10,6 +12,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
 from selenium import webdriver
 import pyperclip  # Thư viện hỗ trợ copy/paste
+from datetime import datetime
 
 # Đảm bảo rằng đầu ra được mã hóa theo UTF-8
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
@@ -19,60 +22,8 @@ if len(sys.argv) < 2:
     print("Ngày không được truyền vào.")
     sys.exit(1)
 
-try:
-    # Kiểm tra nếu thư mục không tồn tại, tạo nó
-    if not os.path.exists(folder_selected):
-        os.makedirs(folder_selected)
-        print(f"Thư mục {folder_selected} đã được tạo.")
-
-    try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            # Parse XML data
-            root = ET.fromstring(response.content)
-
-            # Lấy giá trị từ các phần tử XML
-            date_time = root.find(".//DateTime").text
-            source = root.find(".//Source").text
-
-            # Tạo DataFrame từ dữ liệu XML
-            data = []
-            for exrate_elem in root.findall(".//Exrate"):
-                currency_code = exrate_elem.get("CurrencyCode")
-                currency_name = exrate_elem.get("CurrencyName")
-                buy = exrate_elem.get("Buy")
-                transfer = exrate_elem.get("Transfer")
-                sell = exrate_elem.get("Sell")
-
-                # Thêm thông tin về ngân hàng và ngày vào dữ liệu
-                data.append({
-                    "Currency Code": currency_code,
-                    "Currency Name": currency_name,
-                    "Buy": buy,
-                    "Transfer": transfer,
-                    "Sell": sell,
-                    "BankName": "VCB",  # Thêm cột "BankName" và gán giá trị từ phần tử "Source" của XML
-                    "Date": datetime.now().strftime("%d/%m/%Y")  # Thêm cột "Date" và gán giá trị từ phần tử "DateTime" của XML
-                })
-
-            df = pd.DataFrame(data)
-
-            # Lấy ngày và thời gian hiện tại
-            current_datetime = datetime.now().strftime("%Y%m%d")
-            current_datetime = datetime.now().strftime("%Y%m%d")
-
-            # Tạo tên file với định dạng "vietcombank_data_<ngày>_<giờ>.xlsx"
-            excel_filename = f"{folder_selected}/vietcombank_data_{current_datetime}.csv"
-            df.to_csv(excel_filename, index=False)
-
-            print("Data saved to", excel_filename)
-
-        else:
-            print("Failed to retrieve data. Status code:", response.status_code)
-
-    except Exception as e:
-        print("An error occurred:", e)
 input_date = sys.argv[1]  # Ngày được truyền từ Java
+
 # Thiết lập ChromeDriver
 chrome_options = Options()
 chrome_options.headless = False  # Để dễ kiểm tra (True nếu không cần hiển thị trình duyệt)
@@ -84,6 +35,7 @@ url = "https://vietcombank.com.vn/vi-VN/KHCN/Cong-cu-Tien-ich/Ty-gia"
 driver.get(url)
 driver.execute_script("window.scrollBy(0, 300);")
 time.sleep(2)
+
 # Lấy ô chọn ngày và sao chép giá trị vào clipboard
 date_picker = driver.find_element(By.ID, "datePicker")
 pyperclip.copy(input_date)  # Sao chép ngày vào clipboard
@@ -136,11 +88,12 @@ df = pd.DataFrame(data)
 # Chuyển định dạng ngày sang yyyyMMdd
 formatted_date = f"{input_date[6:]}{input_date[3:5]}{input_date[:2]}"  # Đổi lại thành yyyyMMdd
 
-# Lưu dữ liệu vào file CSV
+# Đảm bảo thư mục tồn tại
 folder_selected = "D:\\DW_2024_T5_Nhom8\\file\\crawl\\vcb"
 if not os.path.exists(folder_selected):
     os.makedirs(folder_selected)
 
+# Lưu dữ liệu vào file CSV
 excel_filename = f"{folder_selected}/vietcombank_data_{formatted_date}.csv"
 
 # Lưu DataFrame ra file CSV với mã hóa UTF-8
@@ -148,3 +101,47 @@ df.to_csv(excel_filename, index=False, encoding="utf-8-sig")
 
 # Đóng trình duyệt
 driver.quit()
+
+# Tải dữ liệu XML nếu cần
+try:
+    xml_url = "YOUR_XML_URL_HERE"  # Thêm URL của nguồn XML ở đây
+    response = requests.get(xml_url)
+    if response.status_code == 200:
+        # Parse XML data
+        root = ET.fromstring(response.content)
+
+        # Lấy giá trị từ các phần tử XML
+        date_time = root.find(".//DateTime").text
+        source = root.find(".//Source").text
+
+        # Tạo DataFrame từ dữ liệu XML
+        xml_data = []
+        for exrate_elem in root.findall(".//Exrate"):
+            currency_code = exrate_elem.get("CurrencyCode")
+            currency_name = exrate_elem.get("CurrencyName")
+            buy = exrate_elem.get("Buy")
+            transfer = exrate_elem.get("Transfer")
+            sell = exrate_elem.get("Sell")
+
+            # Thêm thông tin về ngân hàng và ngày vào dữ liệu
+            xml_data.append({
+                "Currency Code": currency_code,
+                "Currency Name": currency_name,
+                "Buy": buy,
+                "Transfer": transfer,
+                "Sell": sell,
+                "BankName": "VCB",  # Thêm cột "BankName" và gán giá trị từ phần tử "Source" của XML
+                "Date": datetime.now().strftime("%d/%m/%Y")  # Thêm cột "Date" và gán giá trị từ phần tử "DateTime" của XML
+            })
+
+        df_xml = pd.DataFrame(xml_data)
+
+        # Lưu XML Data vào file CSV
+        xml_excel_filename = f"{folder_selected}/vietcombank_xml_data_{datetime.now().strftime('%Y%m%d')}.csv"
+        df_xml.to_csv(xml_excel_filename, index=False, encoding="utf-8-sig")
+
+        print("XML Data saved to", xml_excel_filename)
+    else:
+        print("Failed to retrieve XML data. Status code:", response.status_code)
+except Exception as e:
+    print("An error occurred while retrieving or processing the XML data:", e)
