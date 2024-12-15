@@ -1,5 +1,7 @@
 package mart;
 
+import module.GetConnection2;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,9 +9,9 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class Mart {
-    static Timestamp date = new Timestamp(System.currentTimeMillis());
-    static String date_err = date.toString();
-    static String fileName = "D:\\DW\\DW_2024_T5_Nhom8\\file\\logs\\LogERR" + date_err.replaceAll("\\s", "").replace(":", "-") + ".txt";
+	static Timestamp date = new Timestamp(System.currentTimeMillis());
+	static String date_err = date.toString();
+	static String fileName = "D:\\DW_2024_T5_Nhom8\\file\\logs\\LogERR" + date_err.replaceAll("\\s", "").replace(":", "-") + ".txt";
 
     //	3. Truy vấn dữ liệu có trường là STATUS  từ bảng data_file_configs với điều kiện
 //	(data_file.update_at < CURRENT_TIMESTAMP )
@@ -185,8 +187,8 @@ public class Mart {
 
 //		1. Sử dụng hàm getConnection2(location) để đọc file config.properties với location = control
 //		2.
-        conn_control = new GetConnection2().getConnection("contol");
-        try {
+		conn_control = new GetConnection2().getConnection("contol");
+		try {
 //		3.
 //		4. Kiểm tra status = "P" && destination = "M" (Kiểm tra có tiến trình đang chạy không)
             ResultSet re1 = checkStatus(conn_control, pre_control, "P", "M");
@@ -297,7 +299,7 @@ public class Mart {
             // TODO Auto-generated catch block
             Timestamp date = new Timestamp(System.currentTimeMillis());
             String date_err = date.toString();
-            String fileName = "D:\\DW\\DW_2024_T5_Nhom8\\file\\logs\\LogERR" + date_err.replaceAll("\\s", "").replace(":", "-") + ".txt";
+            String fileName = "D:\\DW_2024_T5_Nhom8\\file\\logs\\LogERR" + date_err.replaceAll("\\s", "").replace(":", "-") + ".txt";
 
             PrintWriter writer = new PrintWriter(new FileWriter(fileName, true));
             writer.println("Error: " + e.getMessage());

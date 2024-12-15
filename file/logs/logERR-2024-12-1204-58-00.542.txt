@@ -1,0 +1,8 @@
+Error: null
+java.lang.NullPointerException
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:413)
+	at java.base/java.lang.Class.forName(Class.java:404)
+	at mart.GetConnection2.getConnection(GetConnection2.java:106)
+	at mart.Mart.Mart(Mart.java:188)
+	at mart.Mart.main(Mart.java:316)

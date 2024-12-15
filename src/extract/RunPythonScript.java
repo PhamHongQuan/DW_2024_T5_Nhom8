@@ -57,4 +57,16 @@ public class RunPythonScript {
             System.out.println("Script failed.");
         }
     }
-}
+
+    public boolean runScript(String scriptPath) {
+        try {
+            // Execute the script using the ProcessBuilder class or Runtime.exec
+            ProcessBuilder processBuilder = new ProcessBuilder("python", scriptPath);
+            Process process = processBuilder.start();
+            int exitCode = process.waitFor();
+            return exitCode == 0;  // If the script ran successfully, the exit code will be 0.
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }}

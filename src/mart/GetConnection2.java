@@ -1,4 +1,4 @@
-package mart;
+package module;
 
 import java.io.FileInputStream;
 import java.io.FileWriter;
@@ -20,83 +20,127 @@ public class GetConnection2 {
     String databasebName = null;
     public static int checkE;
 
-    public Connection getConnection(String location) throws IOException, SQLException {
-        // Đường dẫn đến file cấu hình
-        String filePath = "config.properties";
+    public Connection getConnection(String location) throws IOException {
+        // path config src\test\config.properties
+        // path config ./module/config/config.properties
+//		 String link = "/test/config.properties";
+        String filePath = "D:\\DW_2024_T5_Nhom8\\module\\config\\config.properties";
 
         // Sử dụng ClassLoader để đọc tệp tin
         ClassLoader classLoader = GetConnection2.class.getClassLoader();
+
+//		String link = ".\\src\\test\\config.properties"; classLoader.getResourceAsStream(filePath)
         Connection result = null;
+        // ket noi db warehouse
+        if (location.equalsIgnoreCase("warehouse")) {
 
-        try (InputStream input = classLoader.getResourceAsStream(filePath)) {
-            if (input == null) {
-                throw new IOException("Không thể tìm thấy file cấu hình.");
+            try (InputStream input = classLoader.getResourceAsStream(filePath)) {
+
+//			try (InputStream input = new FileInputStream(link)) {
+                Properties prop = new Properties();
+                prop.load(input);
+                // lấy từng thuộc tính cấu hình trong file config
+                driver = prop.getProperty("driver_local");
+                url = prop.getProperty("url_local");
+                databasebName = prop.getProperty("dbName_datawarehouse");
+                user = prop.getProperty("user_local");
+                pass = prop.getProperty("pass_local");
+            } catch (IOException e) {
+                Timestamp date = new Timestamp(System.currentTimeMillis());
+                String date_err = date.toString();
+                String fileName = "D:\\logs\\logERR-" + date_err.replaceAll("\\s", "").replace(":", "-") + ".txt";
+
+                PrintWriter writer = new PrintWriter(new FileWriter(fileName, true));
+                writer.println("Error: " + e.getMessage());
+                writer.close();
             }
+            // ket noi db mart local
+        } else if (location.equalsIgnoreCase("mart")) {
+            try (InputStream input = classLoader.getResourceAsStream(filePath)) {
+//				try (InputStream input = new FileInputStream(link)) {
 
-            Properties prop = new Properties();
-            prop.load(input);
-
-            // Đọc cấu hình dựa trên location
-            switch (location.toLowerCase()) {
-                case "warehouse":
-                    driver = prop.getProperty("driver_local");
-                    url = prop.getProperty("url_local");
-                    databasebName = prop.getProperty("dbName_datawarehouse");
-                    user = prop.getProperty("user_local");
-                    pass = prop.getProperty("pass_local");
-                    break;
-
-                case "mart":
-                    driver = prop.getProperty("driver_local");
-                    url = prop.getProperty("url_local");
-                    databasebName = prop.getProperty("dbName_datamart");
-                    user = prop.getProperty("user_local");
-                    pass = prop.getProperty("pass_local");
-                    break;
-
-                case "control":
-                    driver = prop.getProperty("driver_local");
-                    url = prop.getProperty("url_local");
-                    databasebName = prop.getProperty("dbName_control");
-                    user = prop.getProperty("user_local");
-                    pass = prop.getProperty("pass_local");
-                    break;
-
-                default:
-                    throw new IllegalArgumentException("Location không hợp lệ: " + location);
+                Properties prop = new Properties();
+                prop.load(input);
+                // 2.2.1 lấy từng thuộc tính cấu hình trong file config
+                driver = prop.getProperty("driver_local");
+                url = prop.getProperty("url_local");
+                databasebName = prop.getProperty("dbName_datamart");
+                user = prop.getProperty("user_local");
+                pass = prop.getProperty("pass_local");
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
-        } catch (IOException | IllegalArgumentException e) {
-            logError(e.getMessage());
-            throw new IOException("Lỗi khi đọc cấu hình hoặc vị trí không hợp lệ.", e);
+        } else if (location.equalsIgnoreCase("control")) {
+            try (InputStream input = classLoader.getResourceAsStream(filePath)) {
+//				try (InputStream input = new FileInputStream(link)) {
+
+                Properties prop = new Properties();
+                prop.load(input);
+                // lấy từng thuộc tính cấu hình trong file config
+                driver = prop.getProperty("driver_local");
+                url = prop.getProperty("url_local");
+                databasebName = prop.getProperty("dbName_control");
+                user = prop.getProperty("user_local");
+                pass = prop.getProperty("pass_local");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            // ket noi db mart server
+//		}else if (location.equalsIgnoreCase("mart")) {
+//			try (InputStream input = new FileInputStream(link)) {
+//				Properties prop = new Properties();
+//				prop.load(input);
+//				// 2.2.1 lấy từng thuộc tính cấu hình trong file config
+//				driver = prop.getProperty("driver_local");
+//				url = prop.getProperty("url_server");
+//				databasebName = prop.getProperty("dbName_datamart");
+//				user = prop.getProperty("username_server");
+//				pass = prop.getProperty("pass_server");
+//			} catch (IOException ex) {
+//				ex.printStackTrace();
+//			}
         }
 
-        // Kết nối tới cơ sở dữ liệu
         try {
-            // Đăng ký driver JDBC
+            // đăng kí driver
             Class.forName(driver);
-
             String connectionURL = url + databasebName;
-            result = DriverManager.getConnection(connectionURL, user, pass);
-            checkE = 1;
-        } catch (ClassNotFoundException | SQLException e) {
-            logError(e.getMessage());
-            checkE = 0;
-            throw new SQLException("Không thể kết nối đến cơ sở dữ liệu.", e);
-        }
+            try {
+//				2. Kết nối db control
+                result = DriverManager.getConnection(connectionURL, user, pass);
+                checkE = 1;
+            } catch (SQLException e) {
+//              2.1 Tạo file ghi lỗi
 
+                if (location.equalsIgnoreCase("control")) {
+                    System.out.println("Kết nối không thành công");
+                    Timestamp date = new Timestamp(System.currentTimeMillis());
+                    String date_err = date.toString();
+                    String fileName = "D:\\logs\\logERR-" + date_err.replaceAll("\\s", "").replace(":", "-") + ".txt";
+
+                    PrintWriter writer = new PrintWriter(new FileWriter(fileName, true));
+                    writer.println("Error: " + e.getMessage());
+                    e.printStackTrace(writer);
+                    writer.close();
+                    System.exit(0);
+                }
+                checkE = 0;
+            }
+
+        } catch (NullPointerException | ClassNotFoundException e) {
+            Timestamp date = new Timestamp(System.currentTimeMillis());
+            String date_err = date.toString();
+            String fileName = "D:\\logs\\logERR-" + date_err.replaceAll("\\s", "").replace(":", "-") + ".txt";
+
+            PrintWriter writer = new PrintWriter(new FileWriter(fileName, true));
+            writer.println("Error: " + e.getMessage());
+            e.printStackTrace(writer);
+            writer.close();
+            System.out.println("Không kết nối được driver");
+            System.exit(0);
+        }
         return result;
     }
 
-    // Hàm ghi lỗi vào file log
-    private void logError(String errorMessage) {
-        Timestamp date = new Timestamp(System.currentTimeMillis());
-        String date_err = date.toString().replaceAll("\\s", "").replace(":", "-");
-        String fileName = "D:\\DW\\DW_2024_T5_Nhom8\\file\\logs\\logERR-" + date_err + ".txt";
-
-        try (PrintWriter writer = new PrintWriter(new FileWriter(fileName, true))) {
-            writer.println("Error: " + errorMessage);
-        } catch (IOException e) {
-            System.out.println("Lỗi khi ghi log: " + e.getMessage());
-        }
-    }
 }
+

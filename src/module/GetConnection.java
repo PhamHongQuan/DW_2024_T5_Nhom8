@@ -38,7 +38,7 @@ public class GetConnection {
     }
 
     public void logFile(String message) throws IOException {
-        FileWriter fw = new FileWriter("D:\\DW\\DW_2024_T5_Nhom8\\file\\logs\\logs.txt", true);
+        FileWriter fw = new FileWriter("D:\\DW_2024_T5_Nhom8\\file\\logs\\logs.txt", true);
         PrintWriter pw = new PrintWriter(fw);
         pw.println(message + "\t");
         pw.println("HH:mm:ss dd/MM/yyyy - " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss dd/MM/yyyy")));
@@ -47,7 +47,7 @@ public class GetConnection {
     }
 
     public Connection getConnection(String location) throws IOException {
-        String link = "D:\\DW\\DW_2024_T5_Nhom8\\module\\config\\config.properties";
+        String link = "D:\\DW_2024_T5_Nhom8\\module\\config\\config.properties";
         Connection result = null;
 
         // 3. ket noi db control

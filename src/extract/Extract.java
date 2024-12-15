@@ -191,7 +191,7 @@ public class Extract {
 
     private List<Integer> loadConfig() throws SQLException, IOException {
         conn = new GetConnection().getConnection("control");
-        String link = "D:\\DW\\DW_2024_T5_Nhom8\\module\\config\\config.properties";
+        String link = "D:\\DW_2024_T5_Nhom8\\module\\config\\config.properties";
         List<Integer> dfConfigIds = new ArrayList<>();
         try (InputStream input = new FileInputStream(link)) {
             Properties properties = new Properties();
